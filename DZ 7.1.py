@@ -1,9 +1,9 @@
 string_list = list(input("введи текст "))
-sim = ["", ""]
+sim = ""
 number = 0
 while len(sim) != 1:
-    sim = list(input("введи ОДИН символ "))
+    sim = input("введи ОДИН символ ")
 for i in string_list:
-    if list(i) == sim:
+    if i == sim:
         number += 1
 print(number)
