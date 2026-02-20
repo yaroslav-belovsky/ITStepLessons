@@ -3,35 +3,30 @@ my_bsket = {}
 
 def add():
     strig_produkt = input("напиши так: назва/ціна - ")
-    global x
-    global y
-    x = ""
-    y = ""
-    global ended
-    ended = False
-    integer = False
-    for i in list(strig_produkt):
+    name = ""
+    price = ""
+    slash = False
+    for i in strig_produkt:
         if i == "/":
-            integer = True
-            ended = True
+            slash = True
             continue
-        if integer:
-            x += i
-        elif integer == False:
-            y += i
-    if ended == False:
+        if slash:
+            price += i
+        else:
+            name += i
+    if slash == False:
         print("не має /")
         add()
+    my_bsket[name] = int(price)
+
 while True:
     answer = input("продовжити?\n1-так, 2-ні\n")
     if answer == "1":
         add()
-        weare = y
-        my_bsket[weare] = int(x)
     elif answer == "2":
         total = sum(my_bsket.values())
         print("чек")
-        for i in my_bsket:
-            print(f"       {i}      {my_bsket[i]}")
+        for name in my_bsket:
+            print(f"       {name}      {my_bsket[name]}")
         print(f"\nвсього: {total} грн")
         break
